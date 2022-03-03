@@ -21,3 +21,8 @@ function launchModal() {
 }
 
 
+// Fermer la modale 
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
