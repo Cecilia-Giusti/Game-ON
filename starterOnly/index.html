@@ -68,32 +68,46 @@
 
     </section>
 
-    <!-- Formulaire  -->
+    <!-- Section du Formulaire  -->
     <div class="bground">
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
+
+          <!-- Formulaire  -->
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+
+            <!-- Prenom  -->
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
             </div>
+
+            <!-- Nom  -->
             <div class="formData">
               <label>Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
+
+            <!-- Email -->
             <div class="formData">
               <label>E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
             </div>
+
+            <!-- Date de naissance  -->
             <div class="formData">
               <label>Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
+
+            <!-- Nombre de tournois  -->
             <div class="formData">
               <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
+
+            <!-- Participation  -->
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
@@ -122,6 +136,7 @@
                 Portland</label>
             </div>
 
+            <!-- Conditions d'utilisation -->
             <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
               <label class="checkbox2-label" for="checkbox1">
@@ -129,6 +144,8 @@
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
               <br>
+
+              <!-- Prochains évènement -->
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
@@ -136,8 +153,11 @@
               </label>
               <br>
             </div>
+
+            <!-- Bouton de validation -->
             <input class="btn-submit button" type="submit" value="C'est parti" />
           </form>
+          
         </div>
       </div>
     </div>
