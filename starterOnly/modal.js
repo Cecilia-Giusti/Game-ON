@@ -25,110 +25,81 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
-
-
 //Récupération des champs 
 let first = document.getElementById('first');
 let last = document.getElementById('last');
 let email = document.getElementById('email');
 let birthdate = document.getElementById('birthdate');
+let quantity = document.getElementById('quantity')
 let radios = document.getElementsByClassName('radio');
 let cgu = document.getElementById('checkbox1');
-let form = document.getElementsByTagName('form');
 
 
 // Regex 
 const regexSupTwo = new RegExp('[a-zA-Z]{2,}');
 const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
-const regexBirthdate = new RegExp('[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}');
+const regexBirthdate = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}');
 
-
-// Validation du 
-
-function validate(){
-  if (first.value!="" && regexSupTwo.test(first.value)) {
-    if (last.value!="" && regexSupTwo.test(last.value)) {
-      if (email.value!="" && regexEmail.test(email.value)) {
-        if (birthdate.value!="" && regexBirthdate.test(birthdate.value)) {
-          if (cgu.checked) {
-            for (let i=0; i<7; i++){
-              if(radios[i].checked){
-                return true;
+// Validation du formulaire 
+function validate() {
+  if (first.value != "" && regexSupTwo.test(first.value)) {
+    if (last.value != "" && regexSupTwo.test(last.value)) {
+      if (email.value != "" && regexEmail.test(email.value)) {
+        if (birthdate.value != "" && regexBirthdate.test(birthdate.value)) {
+          if (quantity.value != "") {
+            if (cgu.checked) {
+              for (let i = 0; i < 7; i++) {
+                if (radios[i].checked) {
+                  return true;
+                }
+                else {
+                  errorMessage(items.radios, radios);
                 }
               }
             }
+            else {
+              errorMessage(items.cgu, cgu);
+            }
+          }
+          else {
+            errorMessage(items.quantity, quantity);
           }
         }
+        else {
+          errorMessage(items.birthdate, birthdate);
+        }
+      }
+      else {
+        errorMessage(items.email, email);
       }
     }
+    else {
+      errorMessage(items.name, name);
+    }
+  }
+  else {
+    errorMessage(items.firstname, first);
+  }
   return false;
 }
 
-  //Verification du prenom, + de 2 lettres et non vide
-   first.addEventListener('input', function(){
-   if (first.value!="" && regexSupTwo.test(first.value)) {
-     return true;
-   } else {
-     return false;
-   } 
-   })
- 
-
-//Verification du nom, + de 2 lettres et non vide
-last.addEventListener('input', function(){
-  if (last.value!="" && regexSupTwo.test(last.value)) {
-    console.log(true);
-  } else {
-    console.log(false);
-  }
-  })
-
-  //Vérification de l'adresse email 
-  email.addEventListener('input', function(){
-    if (email.value!="" && regexEmail.test(email.value)) {
-      console.log(true);
-      return true;
-    } else {
-      console.log(false)
-      return false;
-    }
-    })
-
-
-    //Vérification de la date d'anniversaire 
-  birthdate.addEventListener('input', function(){
-    if (birthdate.value!="" && regexBirthdate.test(birthdate.value)) {
-      console.log(true);
-      return true;
-    } else {
-      console.log(false)
-      return false;
-    }
-    })
-
-
-// Vérification des boutons radios
-for (let i=0; i<7; i++){
-  radios[i].addEventListener('input', function(){
-    if(radios[i].checked){
-      console.log(true);
-      return true;
-    }
-    else {
-      console.log(false)
-      return false;
-    }
-  })
+let items = {
+  "firstname": "Veuillez entrer un prénom avec au moins 2 lettres",
+  "name": "Veuillez entrer un nom avec au moins 2 lettres",
+  "email": "Veuillez entrer une adresse mail valide",
+  "birthdate": "Veuillez entrer une date d'anniversaire",
+  "quantity" : "Veuillez entrer un nombre compris entre 1 et 99",
+  "radios": "Veuillez choisir un tournoi",
+  "cgu": "Veuillez lire et accepter les conditions d'utilisation"
 }
 
-// Vérification de la validation des CGU
-cgu.addEventListener('input', function(){
-  if (cgu.checked) {
-    console.log(true);
-    return true;
-  } else {
-    console.log(false);
-    return false;
-  }
-  })
+function errorMessage(items, where) {
+  let error = document.createElement("div");
+  error.setAttribute("class", "red");
+  error.innerHTML = items;
+  where.parentNode.appendChild(error);
+}
+
+
+
+

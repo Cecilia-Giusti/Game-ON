@@ -399,6 +399,15 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+/* Message d'erreur  */
+.red {
+  font-size: 0.6em;
+  font-weight: 500;
+  color:rgb(248, 47, 47);
+}
+
+
 /* custom select end */
 .text-label {
   font-weight: normal;
@@ -526,4 +535,6 @@ footer {
     opacity: 1;
   }
 }
+
+
 
