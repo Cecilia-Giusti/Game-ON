@@ -44,7 +44,7 @@ const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
 const regexBirthdate = new RegExp('[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}');
 
 
-// Validation du formulaire
+// Validation du 
 
 function validate(){
   if (first.value!="" && regexSupTwo.test(first.value)) {
@@ -64,8 +64,6 @@ function validate(){
     }
   return false;
 }
-
-
 
   //Verification du prenom, + de 2 lettres et non vide
    first.addEventListener('input', function(){
