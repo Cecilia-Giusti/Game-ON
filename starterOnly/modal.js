@@ -33,6 +33,7 @@ let birthdate = document.getElementById('birthdate');
 let quantity = document.getElementById('quantity')
 let radios = document.getElementsByClassName('radio');
 let cgu = document.getElementById('checkbox1');
+let form = document.getElementById('form');
 
 
 // Regex 
@@ -40,58 +41,76 @@ const regexSupTwo = new RegExp('[a-zA-Z]{2,}');
 const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
 const regexBirthdate = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}');
 
-// Validation du formulaire 
-function validate() {
-
-  // Vérification et validations des données recues
+// Vérification de chaque input 
+function firstnameValidate() {
   if (first.value != "" && regexSupTwo.test(first.value)) {
-    if (last.value != "" && regexSupTwo.test(last.value)) {
-      if (email.value != "" && regexEmail.test(email.value)) {
-        if (birthdate.value != "" && regexBirthdate.test(birthdate.value)) {
-          if (quantity.value != "") {
-            if (cgu.checked) {
-              for (let i = 0; i < 7; i++) {
-                if (radios[i].checked) {
-                  return true;
-                }
-
-                // Messages d'erreurs en cas de non validité
-                else {
-                  errorMessage(items.radios, radios);
-                }
-              }
-            }
-            else {
-              errorMessage(items.cgu, cgu);
-              errorCheckbox();
-              
-            }
-          }
-          else {
-            errorMessage(items.quantity, quantity);
-            errorInput(quantity);
-          }
-        }
-        else {
-          errorMessage(items.birthdate, birthdate);
-          errorInput(birthdate);
-        }
-      }
-      else {
-        errorMessage(items.email, email);
-        errorInput(email);
-      }
-    }
-    else {
-      errorMessage(items.name, last);
-      errorInput(last);
-    }
-  }
-  else {
+    return true
+  } else {
     errorMessage(items.firstname, first);
     errorInput(first);
+    return false
   }
+}
+
+function lastnameValidate() {
+  if (last.value != "" && regexSupTwo.test(last.value)) {
+    return true
+  } else {
+    errorMessage(items.name, last);
+    errorInput(last);
+    return false;
+  }
+}
+
+function emailValidate() {
+  if (email.value != "" && regexEmail.test(email.value)) {
+    return true;
+  } else {
+    errorMessage(items.email, email);
+    errorInput(email);
+    return false;
+  }
+}
+
+function birthdateValidate() {
+  if (birthdate.value != "" && regexBirthdate.test(birthdate.value)) {
+    return true;
+  } else {
+    errorMessage(items.birthdate, birthdate);
+    errorInput(birthdate);
+    return false;
+  }
+}
+
+function quantityValidate() {
+  if (quantity.value != "") {
+    return true;
+  } else {
+    errorMessage(items.quantity, quantity);
+    errorInput(quantity);
+    return false;
+  }
+}
+
+function cguValidate() {
+  if (cgu.checked) {
+    return true;
+  } else {
+    errorMessageCgu(items.cgu);
+    errorCheckbox();
+    return false;
+  }
+}
+
+function radiosValidate() {
+  for (let i = 0; i < 7; i++) {
+    if (radios[i].checked) {
+      return true;
+    }
+  }
+  errorMessage(items.radios, radios);
   return false;
+
 }
 
 // Objets contenant les messages d'erreurs
@@ -107,7 +126,7 @@ let items = {
 
 //Fonction créant un message d'erreur s'il n'y en a pas 
 function errorMessage(items, where) {
-  if (!document.querySelector('.red')) {
+  if (!where.parentNode.querySelector('.red')) {
     let error = document.createElement("div");
     error.setAttribute("class", "red");
     error.innerHTML = items;
@@ -115,19 +134,63 @@ function errorMessage(items, where) {
   }
 }
 
+// Fonction créant un message d'erreur s'il n'y en a pas pour les cgu
+function errorMessageCgu(items) {
+  let cgu = document.querySelector('.checkbox2-label')
+  if (!cgu.querySelector('.redCgu')) {
+    let error = document.createElement("div");
+    error.setAttribute("class", "redCgu");
+    error.innerHTML = items;
+    let cguCheckbox = document.querySelector('label.checkbox2-label');
+    console.log(cguCheckbox);
+    cguCheckbox.appendChild(error);
+  }
+}
+
 // Fonction créant une bordure rouge en cas d'erreur 
-function errorInput (where){
-  if(!document.querySelector('.borderRed')) {
+function errorInput(where) {
+  if (!where.querySelector('.borderRed')) {
     where.setAttribute('class', 'text-control borderRed');
   }
 }
 
-function errorCheckbox (){
-  if (!document.querySelector('.borderRed'))
-  document.querySelector('.checkbox2-label').setAttribute('class', 'checkbox2-label borderRed checkboxPadding');
+function errorCheckbox() {
+  let cgu = document.querySelector('.checkbox2-label')
+  if (!cgu.querySelector('.checkbox--borderRed'))
+    cgu.setAttribute('class', 'checkbox2-label checkbox--borderRed');
 }
 
 
 
+// Fonction pour afficher les erreurs 
+function errorApply() {
+  firstnameValidate();
+  lastnameValidate();
+  emailValidate();
+  birthdateValidate();
+  quantityValidate();
+  cguValidate();
+  radiosValidate();
+}
 
+// Validation du formulaire 
+form.addEventListener("submit", function (event) {
 
+// Afficher les erreurs 
+  errorApply();
+
+  // Tester chaque champs
+  if (firstnameValidate() &&
+    lastnameValidate() &&
+    emailValidate() &&
+    birthdateValidate() &&
+    quantityValidate() &&
+    cguValidate() &&
+    radiosValidate()
+  ) {
+    return true;
+  } else {
+    event.preventDefault();
+    
+  }
+})

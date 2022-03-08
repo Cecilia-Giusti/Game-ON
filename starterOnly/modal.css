@@ -407,14 +407,22 @@ input[data-error]::after {
   color:rgb(248, 47, 47);
 }
 
+.redCgu {
+  font-size: 0.9em;
+  font-weight: 500;
+  color:rgb(248, 47, 47);
+}
+
 /* Bordure rouge en cas d'erreur  */
 .borderRed {
   border: 2px solid red;
 }
 
-.checkboxPadding {
-padding:5px;
+.checkbox--borderRed {
+  padding:5px;
+  border: 1px solid red;
 }
+
 
 /* custom select end */
 .text-label {
