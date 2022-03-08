@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const closeBtn = document.getElementById('close');
 
 // Evenement au click qui lance la modale 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -19,6 +20,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+// Evenement au click qui ferme la modale 
+closeBtn.addEventListener("click", closeModal);
 
 // Fonction pour la fermeture de la modale 
 function closeModal() {
@@ -104,13 +108,11 @@ function cguValidate() {
 
 function radiosValidate() {
   for (let i = 0; i < 7; i++) {
-    if (radios[i].checked) {
+    if (radios[i].checked){
       return true;
     }
   }
-  errorMessage(items.radios, radios);
   return false;
-
 }
 
 // Objets contenant les messages d'erreurs
@@ -142,7 +144,6 @@ function errorMessageCgu(items) {
     error.setAttribute("class", "redCgu");
     error.innerHTML = items;
     let cguCheckbox = document.querySelector('label.checkbox2-label');
-    console.log(cguCheckbox);
     cguCheckbox.appendChild(error);
   }
 }
@@ -159,8 +160,6 @@ function errorCheckbox() {
   if (!cgu.querySelector('.checkbox--borderRed'))
     cgu.setAttribute('class', 'checkbox2-label checkbox--borderRed');
 }
-
-
 
 // Fonction pour afficher les erreurs 
 function errorApply() {
