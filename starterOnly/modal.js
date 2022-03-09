@@ -120,7 +120,7 @@ function cguValidate() {
 
 function radiosValidate() {
   for (let i = 0; i < 7; i++) {
-    if (radios[i].checked){
+    if (radios[i].checked) {
       return true;
     }
   }
@@ -149,8 +149,8 @@ function errorMessage(items, where) {
 }
 
 // Fonction enlevant le message d'erreur 
-function deleteErrorMessage(where){
-  if (where.parentNode.querySelector('.red')){
+function deleteErrorMessage(where) {
+  if (where.parentNode.querySelector('.red')) {
     let whereMessageParent = where.parentNode;
     let whereMessageChild = where.parentNode.querySelector('.red')
     whereMessageParent.removeChild(whereMessageChild);
@@ -170,9 +170,9 @@ function errorMessageCgu(items) {
 }
 
 // Fonction enlevant le message d'erreur pour les cgu
-function deleteErrorMessageCgu(){
+function deleteErrorMessageCgu() {
   let cgu = document.querySelector('.checkbox2-label')
-  if (cgu.querySelector('.redCgu')){
+  if (cgu.querySelector('.redCgu')) {
     let cguCheckboxChild = document.querySelector('.redCgu');
     let cguCheckboxParent = cguCheckboxChild.parentNode;
     cguCheckboxParent.removeChild(cguCheckboxChild);
@@ -195,13 +195,13 @@ function errorCheckbox() {
 
 // Fonction retirant la bordure rouge
 function deleteErrorInput(where) {
-    where.setAttribute('class', 'text-control');
+  where.setAttribute('class', 'text-control');
 
 }
 
 function deleteErrorCheckbox() {
   let cgu = document.querySelector('.checkbox2-label')
-    cgu.setAttribute('class', 'checkbox2-label');
+  cgu.setAttribute('class', 'checkbox2-label');
 }
 
 // Fonction pour afficher les erreurs 
@@ -215,37 +215,48 @@ function errorApply() {
   radiosValidate();
 }
 
+
+// Fonction pour valider tous les champs 
+function validateForm(){
+  if (firstnameValidate() &&
+  lastnameValidate() &&
+  emailValidate() &&
+  birthdateValidate() &&
+  quantityValidate() &&
+  cguValidate() &&
+  radiosValidate()){
+    return true;
+  }else {
+    return false
+  }
+}
+
 // Validation du formulaire 
 form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-// Afficher les erreurs 
-  errorApply();
-
-  // Tester chaque champs
-  if (firstnameValidate() &&
-    lastnameValidate() &&
-    emailValidate() &&
-    birthdateValidate() &&
-    quantityValidate() &&
-    cguValidate() &&
-    radiosValidate()
-  ) {
+  // Tests de tous les champs 
+  if (validateForm()) {
+    closeModal();
+    thanks();
     return true;
-    
   } else {
-    event.preventDefault();
-    
+    // Afficher les erreurs 
+    errorApply();
   }
 })
 
-function thanks(){
-  const thanks = document.getElementById('thanks');
-  thanks.setAttribute("class", "thanksbground display-block");
-  const thanksBtn = document.querySelector('#thanks input');
-  thanksBtn.addEventListener('click', function(){
-    thanks.setAttribute("class", "thanksbground display-none");
-  })
-  
-}
+// Remerciement 
+const thanksBtn = document.getElementById('thanks');
 
-thanks();
+// Fonction de lancement du message de remerciement
+function thanks() {
+  thanksBtn.setAttribute("class", "thanksbground display-block");
+  }
+
+//Fermeture du message de remerciement
+thanksBtn.addEventListener('click', function () {
+  thanksBtn.setAttribute("class", "thanksbground display-none");
+
+})
+
