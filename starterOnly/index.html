@@ -17,7 +17,7 @@
     <div class="header-logo">
       <img alt="logo" src="Logo.png" />
     </div>
-    
+
     <!-- Menu  -->
     <nav class="main-navbar">
       <ul>
@@ -25,9 +25,11 @@
         <li><a href="#">À propos</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Évènements passés</a></li>
-        <li><a href="javascript:void(0);" class="icon" onclick="editNav()">
-          <i class="fa fa-bars"></i></li>
       </ul>
+      <span>
+        <!-- <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i> -->
+      </span>
     </nav>
   </header>
 
@@ -81,38 +83,39 @@
             <!-- Prenom  -->
             <div class="formData">
               <label for="first">Prénom</label><br>
-              <input class="text-control" type ="text" id="first" name="first"/><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
 
             <!-- Nom  -->
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type ="text" id="last" name="last" /><br>
+              <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
 
             <!-- Email -->
             <div class="formData">
               <label for="email">E-mail</label><br>
-              <input class="text-control" type ="email" id="email" name="email" /><br>
+              <input class="text-control" type="email" id="email" name="email" /><br>
             </div>
 
             <!-- Date de naissance  -->
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type ="date" id="birthdate" name="birthdate" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
 
             <!-- Nombre de tournois  -->
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" type ="number" id="quantity" name="quantity" min="0" max="99">
+              <input type="number" class="text-control" type="number" id="quantity" name="quantity" min="0" max="99">
             </div>
 
             <!-- Participation  -->
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div id="radios" class="formData">
 
-              <input class="checkbox-input radio" type="radio" id="location1" name="location" value="New_York" checked/>
+              <input class="checkbox-input radio" type="radio" id="location1" name="location" value="New_York"
+                checked />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -171,10 +174,12 @@
     </div>
 
     <!-- Section de remerciement  -->
-    <div class="bground">
+    <div id="thanks" class="thanksbground display-block">
+      <div class="content content-thanks">
       <p> Merci pour votre inscription</p>
       <input class="button" value="Fermer" />
     </div>
+  </div>
   </main>
 
   <!-- Pied de page  -->

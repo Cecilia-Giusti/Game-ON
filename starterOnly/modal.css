@@ -36,6 +36,15 @@ img {
   padding-right: 1rem;
 }
 
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 /* En-tête */
 .topnav {
   overflow: hidden;
@@ -352,6 +361,47 @@ input {
   cursor: pointer;
   border: 0;
 }
+
+/* Remerciements  */
+
+.thanksbground {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content-thanks{
+  width:500px;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.content-thanks p {
+  font-size: 36px;
+  flex-grow: 1;
+  margin-top:50%;
+  margin-left:20px;
+  margin-right:20px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.content-thanks input {
+  justify-self: flex-end;
+  text-align: center;
+  margin-bottom: 20px;
+  border:none;
+}
+
 /* styles de sélection personnalisés */
 .custom-select {
   position: relative;
@@ -419,7 +469,7 @@ input {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* custom select end */
+/* Style du texte des labels */
 .text-label {
   font-weight: normal;
   font-size: 16px;
