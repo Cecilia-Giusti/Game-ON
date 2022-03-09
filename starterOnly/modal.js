@@ -48,7 +48,9 @@ const regexBirthdate = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}');
 // Vérification de chaque input 
 function firstnameValidate() {
   if (first.value != "" && regexSupTwo.test(first.value)) {
-    return true
+    deleteErrorMessage(first);
+    deleteErrorInput(first);
+    return true;
   } else {
     errorMessage(items.firstname, first);
     errorInput(first);
@@ -58,7 +60,9 @@ function firstnameValidate() {
 
 function lastnameValidate() {
   if (last.value != "" && regexSupTwo.test(last.value)) {
-    return true
+    deleteErrorMessage(last);
+    deleteErrorInput(last);
+    return true;
   } else {
     errorMessage(items.name, last);
     errorInput(last);
@@ -68,6 +72,8 @@ function lastnameValidate() {
 
 function emailValidate() {
   if (email.value != "" && regexEmail.test(email.value)) {
+    deleteErrorMessage(email);
+    deleteErrorInput(email);
     return true;
   } else {
     errorMessage(items.email, email);
@@ -78,6 +84,8 @@ function emailValidate() {
 
 function birthdateValidate() {
   if (birthdate.value != "" && regexBirthdate.test(birthdate.value)) {
+    deleteErrorMessage(birthdate);
+    deleteErrorInput(birthdate);
     return true;
   } else {
     errorMessage(items.birthdate, birthdate);
@@ -88,6 +96,8 @@ function birthdateValidate() {
 
 function quantityValidate() {
   if (quantity.value != "") {
+    deleteErrorMessage(quantity);
+    deleteErrorInput(quantity);
     return true;
   } else {
     errorMessage(items.quantity, quantity);
@@ -98,6 +108,8 @@ function quantityValidate() {
 
 function cguValidate() {
   if (cgu.checked) {
+    deleteErrorMessageCgu();
+    deleteErrorCheckbox();
     return true;
   } else {
     errorMessageCgu(items.cgu);
@@ -136,15 +148,34 @@ function errorMessage(items, where) {
   }
 }
 
+// Fonction enlevant le message d'erreur 
+function deleteErrorMessage(where){
+  if (where.parentNode.querySelector('.red')){
+    let whereMessageParent = where.parentNode;
+    let whereMessageChild = where.parentNode.querySelector('.red')
+    whereMessageParent.removeChild(whereMessageChild);
+  }
+}
+
 // Fonction créant un message d'erreur s'il n'y en a pas pour les cgu
 function errorMessageCgu(items) {
-  let cgu = document.querySelector('.checkbox2-label')
+  let cgu = document.querySelector('.checkbox2-label');
   if (!cgu.querySelector('.redCgu')) {
     let error = document.createElement("div");
     error.setAttribute("class", "redCgu");
     error.innerHTML = items;
     let cguCheckbox = document.querySelector('label.checkbox2-label');
     cguCheckbox.appendChild(error);
+  }
+}
+
+// Fonction enlevant le message d'erreur pour les cgu
+function deleteErrorMessageCgu(){
+  let cgu = document.querySelector('.checkbox2-label')
+  if (cgu.querySelector('.redCgu')){
+    let cguCheckboxChild = document.querySelector('.redCgu');
+    let cguCheckboxParent = cguCheckboxChild.parentNode;
+    cguCheckboxParent.removeChild(cguCheckboxChild);
   }
 }
 
@@ -159,6 +190,18 @@ function errorCheckbox() {
   let cgu = document.querySelector('.checkbox2-label')
   if (!cgu.querySelector('.checkbox--borderRed'))
     cgu.setAttribute('class', 'checkbox2-label checkbox--borderRed');
+}
+
+
+// Fonction retirant la bordure rouge
+function deleteErrorInput(where) {
+    where.setAttribute('class', 'text-control');
+
+}
+
+function deleteErrorCheckbox() {
+  let cgu = document.querySelector('.checkbox2-label')
+    cgu.setAttribute('class', 'checkbox2-label');
 }
 
 // Fonction pour afficher les erreurs 
@@ -188,8 +231,21 @@ form.addEventListener("submit", function (event) {
     radiosValidate()
   ) {
     return true;
+    
   } else {
     event.preventDefault();
     
   }
 })
+
+function thanks(){
+  const thanks = document.getElementById('thanks');
+  thanks.setAttribute("class", "thanksbground display-block");
+  const thanksBtn = document.querySelector('#thanks input');
+  thanksBtn.addEventListener('click', function(){
+    thanks.setAttribute("class", "thanksbground display-none");
+  })
+  
+}
+
+thanks();

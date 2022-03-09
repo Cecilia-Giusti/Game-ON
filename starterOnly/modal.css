@@ -36,6 +36,15 @@ img {
   padding-right: 1rem;
 }
 
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
 /* En-tête */
 .topnav {
   overflow: hidden;
@@ -352,6 +361,20 @@ input {
   cursor: pointer;
   border: 0;
 }
+
+/* Remerciements  */
+
+.thanksbground {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
 /* styles de sélection personnalisés */
 .custom-select {
   position: relative;
