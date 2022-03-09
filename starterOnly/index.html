@@ -6,7 +6,6 @@
   <title>Reservation</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="modal.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
 </head>
 
@@ -20,16 +19,13 @@
 
     <!-- Menu  -->
     <nav class="main-navbar">
+      <a id="link" href="#"><span id="burger"></span></a>
       <ul>
         <li class="active"><a href="#" class="active">Détails de l'évènement</a></li>
         <li><a href="#">À propos</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Évènements passés</a></li>
       </ul>
-      <span>
-        <!-- <a href="javascript:void(0);" class="icon" onclick="editNav()">
-          <i class="fa fa-bars"></i> -->
-      </span>
     </nav>
   </header>
 
@@ -51,7 +47,7 @@
           aux réservations... Places limitées !
         </p>
 
-        <!-- Bouton d'inscription display none-->
+        <!-- Bouton d'inscription Desktop-->
         <button class="btn-signup modal-btn">
           je m'inscris
         </button>
@@ -62,9 +58,7 @@
         <img src="./bg_img.jpg" alt="img" />
       </div>
 
-
-      <!-- ************ A voir pour supprimer *********** -->
-      <!-- Bouton d'inscription -->
+      <!-- Bouton d'inscription tablette & mobile -->
       <button class="btn-signup modal-btn">
         je m'inscris
       </button>
@@ -174,12 +168,12 @@
     </div>
 
     <!-- Section de remerciement  -->
-    <div id="thanks" class="thanksbground display-block">
+    <div id="thanks" class="thanksbground display-none">
       <div class="content content-thanks">
-      <p> Merci pour votre inscription</p>
-      <input class="button" value="Fermer" />
+        <p> Merci pour votre inscription</p>
+        <input class="button" value="Fermer" />
+      </div>
     </div>
-  </div>
   </main>
 
   <!-- Pied de page  -->

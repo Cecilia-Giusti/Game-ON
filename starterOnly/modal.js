@@ -1,11 +1,14 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+/* Sélection des éléments HTML */
+let link = document.getElementById('link')
+let burger = document.getElementById('burger')
+let ul = document.querySelector('ul')
+
+/* gestionnaire d'événement sur le a#link pour venir changer l'attribution de la classe .open à la ul et au span#burger */
+link.addEventListener('click', function(e) {
+  e.preventDefault()
+  burger.classList.toggle('open')
+  ul.classList.toggle('open')
+})
 
 // Elements du DOM
 const modalbg = document.querySelector(".bground");
@@ -217,16 +220,16 @@ function errorApply() {
 
 
 // Fonction pour valider tous les champs 
-function validateForm(){
+function validateForm() {
   if (firstnameValidate() &&
-  lastnameValidate() &&
-  emailValidate() &&
-  birthdateValidate() &&
-  quantityValidate() &&
-  cguValidate() &&
-  radiosValidate()){
+    lastnameValidate() &&
+    emailValidate() &&
+    birthdateValidate() &&
+    quantityValidate() &&
+    cguValidate() &&
+    radiosValidate()) {
     return true;
-  }else {
+  } else {
     return false
   }
 }
@@ -252,7 +255,7 @@ const thanksBtn = document.getElementById('thanks');
 // Fonction de lancement du message de remerciement
 function thanks() {
   thanksBtn.setAttribute("class", "thanksbground display-block");
-  }
+}
 
 //Fermeture du message de remerciement
 thanksBtn.addEventListener('click', function () {
