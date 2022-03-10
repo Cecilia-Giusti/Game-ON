@@ -1,20 +1,3 @@
-
-
-// MENU BURGER
-
-//Variables pour le menu burger
-let link = document.getElementById('link')
-let burger = document.getElementById('burger')
-let ul = document.querySelector('ul')
-
-// Menu burger
-link.addEventListener('click', function (e) {
-  e.preventDefault()
-  burger.classList.toggle('open')
-  ul.classList.toggle('open')
-})
-
-
 // OUVERTURE ET FERMETURE DE LA MODALE
 
 //Elements du DOM
@@ -29,7 +12,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", function () {
 }));
 
 // Evenement au click qui ferme la modale 
-closeBtn.addEventListener("click", function () {
+closeBtn.addEventListener("click", function () {    
   closeModal();
 });
 
@@ -51,7 +34,7 @@ function resetModal() {
     deleteErrorMessage(formItems[i]);
     deleteErrorInput(formItems[i]);
   }
-  
+
   // Retirer les bordures rouges et les messages d'erreurs pour les CGU
   deleteErrorMessageCgu();
   deleteErrorCheckbox();
