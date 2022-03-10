@@ -1,38 +1,68 @@
-/* Sélection des éléments HTML */
+
+
+// MENU BURGER
+
+//Variables pour le menu burger
 let link = document.getElementById('link')
 let burger = document.getElementById('burger')
 let ul = document.querySelector('ul')
 
-/* gestionnaire d'événement sur le a#link pour venir changer l'attribution de la classe .open à la ul et au span#burger */
-link.addEventListener('click', function(e) {
+// Menu burger
+link.addEventListener('click', function (e) {
   e.preventDefault()
   burger.classList.toggle('open')
   ul.classList.toggle('open')
 })
 
-// Elements du DOM
+
+// OUVERTURE ET FERMETURE DE LA MODALE
+
+//Elements du DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.getElementById('close');
 
-// Evenement au click qui lance la modale 
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// Fonction pour le lancement de la modale
-function launchModal() {
-  modalbg.style.display = "block";
-}
+
+// Evenement au click qui lance la modale 
+modalBtn.forEach((btn) => btn.addEventListener("click", function () {
+  modalbg.setAttribute('class', 'bground display-block');
+}));
 
 // Evenement au click qui ferme la modale 
-closeBtn.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", function () {
+  closeModal();
+  resetModal();
+});
 
-// Fonction pour la fermeture de la modale 
+// Fonction de fermeture de la modale 
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.setAttribute('class', 'bground display-none');
 }
 
-//Récupération des champs 
+//Fonction de reset pour la modale
+function resetModal() {
+
+  //Reset de tous les champs
+  form.reset();
+
+  // Retirer les bordures rouges et les messages d'erreurs
+  let formItems = [first, last, email, birthdate, quantity];
+
+  for (let i = 0; i < 5; i++) {
+    deleteErrorMessage(formItems[i]);
+    deleteErrorInput(formItems[i]);
+  }
+  
+  // Retirer les bordures rouges et les messages d'erreurs pour les CGU
+  deleteErrorMessageCgu();
+  deleteErrorCheckbox();
+}
+
+//FORMULAIRE
+
+//Elements du DOM - Récupération des champs
 let first = document.getElementById('first');
 let last = document.getElementById('last');
 let email = document.getElementById('email');
@@ -42,13 +72,15 @@ let radios = document.getElementsByClassName('radio');
 let cgu = document.getElementById('checkbox1');
 let form = document.getElementById('form');
 
-
 // Regex 
 const regexSupTwo = new RegExp('[a-zA-Z]{2,}');
 const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
 const regexBirthdate = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}');
 
+
 // Vérification de chaque input 
+
+// Champ prénom
 function firstnameValidate() {
   if (first.value != "" && regexSupTwo.test(first.value)) {
     deleteErrorMessage(first);
@@ -61,6 +93,7 @@ function firstnameValidate() {
   }
 }
 
+// Champ nom de famille
 function lastnameValidate() {
   if (last.value != "" && regexSupTwo.test(last.value)) {
     deleteErrorMessage(last);
@@ -73,6 +106,7 @@ function lastnameValidate() {
   }
 }
 
+//Champ email
 function emailValidate() {
   if (email.value != "" && regexEmail.test(email.value)) {
     deleteErrorMessage(email);
@@ -85,6 +119,7 @@ function emailValidate() {
   }
 }
 
+// Champ date d'anniversaire
 function birthdateValidate() {
   if (birthdate.value != "" && regexBirthdate.test(birthdate.value)) {
     deleteErrorMessage(birthdate);
@@ -97,6 +132,7 @@ function birthdateValidate() {
   }
 }
 
+// Champ quantité de tournois effectuée
 function quantityValidate() {
   if (quantity.value != "") {
     deleteErrorMessage(quantity);
@@ -109,6 +145,7 @@ function quantityValidate() {
   }
 }
 
+// Champ des CGU
 function cguValidate() {
   if (cgu.checked) {
     deleteErrorMessageCgu();
@@ -121,6 +158,7 @@ function cguValidate() {
   }
 }
 
+// Champ du choix du tournois
 function radiosValidate() {
   for (let i = 0; i < 7; i++) {
     if (radios[i].checked) {
@@ -189,6 +227,7 @@ function errorInput(where) {
   }
 }
 
+// Fonction créant une bordure rouge en cas d'erreur pour les CGU
 function errorCheckbox() {
   let cgu = document.querySelector('.checkbox2-label')
   if (!cgu.querySelector('.checkbox--borderRed'))
@@ -202,6 +241,7 @@ function deleteErrorInput(where) {
 
 }
 
+// Fonction retirant la bordure rouge pour les CGU
 function deleteErrorCheckbox() {
   let cgu = document.querySelector('.checkbox2-label')
   cgu.setAttribute('class', 'checkbox2-label');
@@ -234,13 +274,18 @@ function validateForm() {
   }
 }
 
-// Validation du formulaire 
+
+//VALIDATION DU FORMULAIRE
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Tests de tous les champs 
   if (validateForm()) {
+    // Si tous les champs sont validés
+    //Fermeture de la modale
     closeModal();
+    // Affichage des remerciements
     thanks();
     return true;
   } else {
@@ -249,7 +294,9 @@ form.addEventListener("submit", function (event) {
   }
 })
 
-// Remerciement 
+// REMERCIEMENTS
+
+// Element du DOM
 const thanksBtn = document.getElementById('thanks');
 
 // Fonction de lancement du message de remerciement
@@ -260,6 +307,5 @@ function thanks() {
 //Fermeture du message de remerciement
 thanksBtn.addEventListener('click', function () {
   thanksBtn.setAttribute("class", "thanksbground display-none");
-
 })
 
