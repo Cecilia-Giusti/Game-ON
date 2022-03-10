@@ -235,15 +235,21 @@ form.addEventListener("submit", function (event) {
 // REMERCIEMENTS
 
 // Element du DOM
-const thanksBtn = document.getElementById('thanks');
+const thanksBtn = document.getElementById('thanksBtn');
+const thanksContent = document.getElementById('thanks');
+const closeThanksBtn = document.getElementById('closeThanks');
 
 // Fonction de lancement du message de remerciement
 function thanks() {
-  thanksBtn.setAttribute("class", "thanksbground display-block");
+  thanksContent.setAttribute("class", "thanksbground display-block");
 }
 
-//Fermeture du message de remerciement
+//Fermeture du message de remerciement avec le bouton fermer
 thanksBtn.addEventListener('click', function () {
-  thanksBtn.setAttribute("class", "thanksbground display-none");
+  thanksContent.setAttribute("class", "thanksbground display-none");
 })
 
+// Fermeture au click qui ferme les remerciements  avec la croix
+closeThanksBtn.addEventListener("click", function(){
+    thanksContent.setAttribute("class", "thanksbground display-none");
+});
