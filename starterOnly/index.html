@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <title>Reservation</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="./styles/modal.css" />
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
 </head>
 
@@ -14,7 +14,7 @@
   <!-- En-tête -->
   <header class="topnav" id="myTopnav">
     <div class="header-logo">
-      <img alt="logo" src="Logo.png" />
+      <img alt="logo" src="./Public/Logo.png" />
     </div>
 
     <!-- Menu  -->
@@ -55,7 +55,7 @@
 
       <!-- Image de fond -->
       <div class="hero-img">
-        <img src="./bg_img.jpg" alt="img" />
+        <img src="./Public/bg_img.jpg" alt="img" />
       </div>
 
       <!-- Bouton d'inscription tablette & mobile -->
@@ -170,8 +170,9 @@
     <!-- Section de remerciement  -->
     <div id="thanks" class="thanksbground display-none">
       <div class="content content-thanks">
+        <span id="closeThanks" class="close"></span>
         <p> Merci pour votre inscription</p>
-        <input class="button" value="Fermer" />
+        <input class="button" id="thanksBtn" value="Fermer" />
       </div>
     </div>
   </main>
@@ -183,7 +184,9 @@
     </p>
   </footer>
 
-  <script src="modal.js"></script>
+  <script src="./scripts/nav.js"></script>
+  <script src="./scripts/modal.js"></script>
+  <script src="./scripts/validation.js"></script>
 </body>
 
 </html>

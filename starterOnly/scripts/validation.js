@@ -1,73 +1,14 @@
-
-
-// MENU BURGER
-
-//Variables pour le menu burger
-let link = document.getElementById('link')
-let burger = document.getElementById('burger')
-let ul = document.querySelector('ul')
-
-// Menu burger
-link.addEventListener('click', function (e) {
-  e.preventDefault()
-  burger.classList.toggle('open')
-  ul.classList.toggle('open')
-})
-
-
-// OUVERTURE ET FERMETURE DE LA MODALE
-
-//Elements du DOM
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const closeBtn = document.getElementById('close');
-
-// Evenement au click qui lance la modale 
-modalBtn.forEach((btn) => btn.addEventListener("click", function () {
-  resetModal();
-  modalbg.setAttribute('class', 'bground display-block');
-}));
-
-// Evenement au click qui ferme la modale 
-closeBtn.addEventListener("click", function () {
-  closeModal();
-});
-
-// Fonction de fermeture de la modale 
-function closeModal() {
-  modalbg.setAttribute('class', 'bground display-none');
-}
-
-//Fonction de reset pour la modale
-function resetModal() {
-
-  //Reset de tous les champs
-  form.reset();
-
-  // Retirer les bordures rouges et les messages d'erreurs
-  let formItems = [first, last, email, birthdate, quantity];
-
-  for (let i = 0; i < 5; i++) {
-    deleteErrorMessage(formItems[i]);
-    deleteErrorInput(formItems[i]);
-  }
-  
-  // Retirer les bordures rouges et les messages d'erreurs pour les CGU
-  deleteErrorMessageCgu();
-  deleteErrorCheckbox();
-}
-
 //FORMULAIRE
 
 //Elements du DOM - Récupération des champs
-let first = document.getElementById('first');
-let last = document.getElementById('last');
-let email = document.getElementById('email');
-let birthdate = document.getElementById('birthdate');
-let quantity = document.getElementById('quantity')
-let radios = document.getElementsByClassName('radio');
-let cgu = document.getElementById('checkbox1');
-let form = document.getElementById('form');
+const first = document.getElementById('first');
+const last = document.getElementById('last');
+const email = document.getElementById('email');
+const birthdate = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity')
+const radios = document.getElementsByClassName('radio');
+const cgu = document.getElementById('checkbox1');
+const form = document.getElementById('form');
 
 // Regex 
 const regexSupTwo = new RegExp('^[a-zA-Z-]{2,}$');
@@ -166,7 +107,7 @@ function radiosValidate() {
 }
 
 // Objets contenant les messages d'erreurs
-let items = {
+const items = {
   "firstname": "Veuillez entrer un prénom avec au moins 2 lettres",
   "name": "Veuillez entrer un nom avec au moins 2 lettres",
   "email": "Veuillez entrer une adresse mail valide",
@@ -179,7 +120,7 @@ let items = {
 //Fonction créant un message d'erreur s'il n'y en a pas 
 function errorMessage(items, where) {
   if (!where.parentNode.querySelector('.red')) {
-    let error = document.createElement("div");
+    const error = document.createElement("div");
     error.setAttribute("class", "red");
     error.innerHTML = items;
     where.parentNode.appendChild(error);
@@ -189,30 +130,30 @@ function errorMessage(items, where) {
 // Fonction enlevant le message d'erreur 
 function deleteErrorMessage(where) {
   if (where.parentNode.querySelector('.red')) {
-    let whereMessageParent = where.parentNode;
-    let whereMessageChild = where.parentNode.querySelector('.red')
+    const whereMessageParent = where.parentNode;
+    const whereMessageChild = where.parentNode.querySelector('.red')
     whereMessageParent.removeChild(whereMessageChild);
   }
 }
 
 // Fonction créant un message d'erreur s'il n'y en a pas pour les cgu
 function errorMessageCgu(items) {
-  let cgu = document.querySelector('.checkbox2-label');
+  const cgu = document.querySelector('.checkbox2-label');
   if (!cgu.querySelector('.redCgu')) {
-    let error = document.createElement("div");
+    const error = document.createElement("div");
     error.setAttribute("class", "redCgu");
     error.innerHTML = items;
-    let cguCheckbox = document.querySelector('label.checkbox2-label');
+    const cguCheckbox = document.querySelector('label.checkbox2-label');
     cguCheckbox.appendChild(error);
   }
 }
 
 // Fonction enlevant le message d'erreur pour les cgu
 function deleteErrorMessageCgu() {
-  let cgu = document.querySelector('.checkbox2-label')
+  const cgu = document.querySelector('.checkbox2-label')
   if (cgu.querySelector('.redCgu')) {
-    let cguCheckboxChild = document.querySelector('.redCgu');
-    let cguCheckboxParent = cguCheckboxChild.parentNode;
+    const cguCheckboxChild = document.querySelector('.redCgu');
+    const cguCheckboxParent = cguCheckboxChild.parentNode;
     cguCheckboxParent.removeChild(cguCheckboxChild);
   }
 }
@@ -226,7 +167,7 @@ function errorInput(where) {
 
 // Fonction créant une bordure rouge en cas d'erreur pour les CGU
 function errorCheckbox() {
-  let cgu = document.querySelector('.checkbox2-label')
+  const cgu = document.querySelector('.checkbox2-label')
   if (!cgu.querySelector('.checkbox--borderRed'))
     cgu.setAttribute('class', 'checkbox2-label checkbox--borderRed');
 }
@@ -240,7 +181,7 @@ function deleteErrorInput(where) {
 
 // Fonction retirant la bordure rouge pour les CGU
 function deleteErrorCheckbox() {
-  let cgu = document.querySelector('.checkbox2-label')
+  const cgu = document.querySelector('.checkbox2-label')
   cgu.setAttribute('class', 'checkbox2-label');
 }
 
@@ -294,15 +235,21 @@ form.addEventListener("submit", function (event) {
 // REMERCIEMENTS
 
 // Element du DOM
-const thanksBtn = document.getElementById('thanks');
+const thanksBtn = document.getElementById('thanksBtn');
+const thanksContent = document.getElementById('thanks');
+const closeThanksBtn = document.getElementById('closeThanks');
 
 // Fonction de lancement du message de remerciement
 function thanks() {
-  thanksBtn.setAttribute("class", "thanksbground display-block");
+  thanksContent.setAttribute("class", "thanksbground display-block");
 }
 
-//Fermeture du message de remerciement
+//Fermeture du message de remerciement avec le bouton fermer
 thanksBtn.addEventListener('click', function () {
-  thanksBtn.setAttribute("class", "thanksbground display-none");
+  thanksContent.setAttribute("class", "thanksbground display-none");
 })
 
+// Fermeture au click qui ferme les remerciements  avec la croix
+closeThanksBtn.addEventListener("click", function(){
+    thanksContent.setAttribute("class", "thanksbground display-none");
+});
