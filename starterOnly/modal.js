@@ -48,7 +48,7 @@ function resetModal() {
   // Retirer les bordures rouges et les messages d'erreurs
   let formItems = [first, last, email, birthdate, quantity];
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 5; i++) {
     deleteErrorMessage(formItems[i]);
     deleteErrorInput(formItems[i]);
   }
