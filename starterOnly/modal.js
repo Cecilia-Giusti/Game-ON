@@ -23,8 +23,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.getElementById('close');
 
-
-
 // Evenement au click qui lance la modale 
 modalBtn.forEach((btn) => btn.addEventListener("click", function () {
   modalbg.setAttribute('class', 'bground display-block');
@@ -50,7 +48,7 @@ function resetModal() {
   // Retirer les bordures rouges et les messages d'erreurs
   let formItems = [first, last, email, birthdate, quantity];
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     deleteErrorMessage(formItems[i]);
     deleteErrorInput(formItems[i]);
   }
@@ -73,10 +71,10 @@ let cgu = document.getElementById('checkbox1');
 let form = document.getElementById('form');
 
 // Regex 
-const regexSupTwo = new RegExp('[a-zA-Z]{2,}');
+const regexSupTwo = new RegExp('^[a-zA-Z-]{2,}$');
 const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
-const regexBirthdate = new RegExp('[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}');
-
+// De 1900 à 2012
+const regexBirthdate = new RegExp('^((19[0-9]{2})|20((0[0-9])|(1[0-2])))\\-([0-9]|(1[0-2]))\\-(([0-2][0-9])|(3[0-1]))');
 
 // Vérification de chaque input 
 
