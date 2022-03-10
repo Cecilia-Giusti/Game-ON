@@ -25,13 +25,13 @@ const closeBtn = document.getElementById('close');
 
 // Evenement au click qui lance la modale 
 modalBtn.forEach((btn) => btn.addEventListener("click", function () {
+  resetModal();
   modalbg.setAttribute('class', 'bground display-block');
 }));
 
 // Evenement au click qui ferme la modale 
 closeBtn.addEventListener("click", function () {
   closeModal();
-  resetModal();
 });
 
 // Fonction de fermeture de la modale 
@@ -74,7 +74,7 @@ let form = document.getElementById('form');
 const regexSupTwo = new RegExp('^[a-zA-Z-]{2,}$');
 const regexEmail = new RegExp('^[a-z0-9.-_]{2,}@[a-z]{2,}\\.[a-z]{2,4}$');
 // De 1900 à 2012
-const regexBirthdate = new RegExp('^((19[0-9]{2})|20((0[0-9])|(1[0-2])))\\-([0-9]|(1[0-2]))\\-(([0-2][0-9])|(3[0-1]))');
+const regexBirthdate = new RegExp('^((19[0-9]{2})|20((0[0-9])|1[0-2]))\\-(0([0-9])|(1[0-2]))\\-(([0-2][0-9])|3[0-1])');
 
 // Vérification de chaque input 
 
