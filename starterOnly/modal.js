@@ -20,7 +20,6 @@ link.addEventListener('click', function (e) {
 //Elements du DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const closeBtn = document.getElementById('close');
 
 // Evenement au click qui lance la modale 
