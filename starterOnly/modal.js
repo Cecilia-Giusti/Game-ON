@@ -21,7 +21,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Fonction pour le lancement de la modale
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.setAttribute('class', 'bground display-block');
 }
 
 // Evenement au click qui ferme la modale 
@@ -29,7 +29,7 @@ closeBtn.addEventListener("click", closeModal);
 
 // Fonction pour la fermeture de la modale 
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.setAttribute('class', 'bground display-none');
 }
 
 //Récupération des champs 
