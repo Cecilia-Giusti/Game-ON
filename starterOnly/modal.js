@@ -8,7 +8,7 @@ let burger = document.getElementById('burger')
 let ul = document.querySelector('ul')
 
 // Menu burger
-link.addEventListener('click', function(e) {
+link.addEventListener('click', function (e) {
   e.preventDefault()
   burger.classList.toggle('open')
   ul.classList.toggle('open')
@@ -23,16 +23,42 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.getElementById('close');
 
+
+
 // Evenement au click qui lance la modale 
-modalBtn.forEach((btn) => btn.addEventListener("click", function(){
+modalBtn.forEach((btn) => btn.addEventListener("click", function () {
   modalbg.setAttribute('class', 'bground display-block');
 }));
 
 // Evenement au click qui ferme la modale 
-closeBtn.addEventListener("click", function(){
-  modalbg.setAttribute('class', 'bground display-none');
+closeBtn.addEventListener("click", function () {
+  closeModal();
+  resetModal();
 });
 
+// Fonction de fermeture de la modale 
+function closeModal() {
+  modalbg.setAttribute('class', 'bground display-none');
+}
+
+//Fonction de reset pour la modale
+function resetModal() {
+
+  //Reset de tous les champs
+  form.reset();
+
+  // Retirer les bordures rouges et les messages d'erreurs
+  let formItems = [first, last, email, birthdate, quantity];
+
+  for (let i = 0; i < 5; i++) {
+    deleteErrorMessage(formItems[i]);
+    deleteErrorInput(formItems[i]);
+  }
+  
+  // Retirer les bordures rouges et les messages d'erreurs pour les CGU
+  deleteErrorMessageCgu();
+  deleteErrorCheckbox();
+}
 
 //FORMULAIRE
 
@@ -257,9 +283,9 @@ form.addEventListener("submit", function (event) {
   // Tests de tous les champs 
   if (validateForm()) {
     // Si tous les champs sont validés
-      //Fermeture de la modale
+    //Fermeture de la modale
     closeModal();
-      // Affichage des remerciements
+    // Affichage des remerciements
     thanks();
     return true;
   } else {
