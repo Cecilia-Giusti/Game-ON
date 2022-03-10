@@ -1,9 +1,9 @@
 // MENU BURGER
 
 //Variables pour le menu burger
-let link = document.getElementById('link')
-let burger = document.getElementById('burger')
-let ul = document.querySelector('ul')
+const link = document.getElementById('link')
+const burger = document.getElementById('burger')
+const ul = document.querySelector('ul')
 
 // Menu burger
 link.addEventListener('click', function (e) {
