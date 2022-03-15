@@ -30,10 +30,10 @@ function resetModal() {
   // Retirer les bordures rouges et les messages d'erreurs
   const formItems = [first, last, email, birthdate, quantity];
 
-  for (let i = 0; i < 5; i++) {
-    deleteErrorMessage(formItems[i]);
-    deleteErrorInput(formItems[i]);
-  }
+  formItems.forEach(function(item){
+    deleteErrorMessage(item);
+    deleteErrorInput(item);
+  })
 
   // Retirer les bordures rouges et les messages d'erreurs pour les CGU
   deleteErrorMessageCgu();
