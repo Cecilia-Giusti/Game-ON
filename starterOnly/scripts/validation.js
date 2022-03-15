@@ -98,7 +98,7 @@ function cguValidate() {
 
 // Champ du choix du tournois
 function radiosValidate() {
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < radios.length; i++) {
     if (radios[i].checked) {
       return true;
     }
